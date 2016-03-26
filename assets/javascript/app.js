@@ -1,18 +1,31 @@
-$(document).ready(function() {
-	var phaseOne = ['Iron Man','The Incredible Hulk','Iron Man 2','Thor','Captain America: The First Avenger','The Avengers'];
-	var phaseTwo = ['Iron Man 3','Thor: The Dark World','Captain America: The Winter Solider','Guardians of the Galaxy','Avengers: Age of Ultron','Ant-Man'];
+ $(document).ready(function(){
+    function makeElem(type, data, elemToappendTo){
+        var childElem = $(type).text(data);
+        elemToappendTo.append(childElem);
+    }
 
-	dropDowns();
+    function displayMovieInfo(){
+        var movie = $('#heroSearch').val().trim();
+        var queryURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json";
+        $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+            console.log(movie);
+            console.log(response);
+            var movieDiv = $('<div class="movieDiv">');
+            makeElem('<p>', "<b>Movie Info</b>", movieDiv)
+            makeElem('<p>', response.Title, movieDiv)
 
-	function dropDowns() {
+            makeElem('<p>', "Rating: " + response.Rated, movieDiv)
+            makeElem('<p>', "Released: " + response.Released, movieDiv)
+            makeElem('<p>', "Plot: " + response.Plot, movieDiv)
+            if (response.Poster != 'N/A'){
+                var image = $('<img>').attr("src", response.Poster);
+                movieDiv.append(image);
+            }
+            $('#moviesView').prepend(movieDiv);
+        }); 
+    }
 
-		for (i = 0; i < phaseOne.length; i++) {
-			var movieDropdown = $('<li><a>');
-			var movieLink = $('<a>');
-			movieLink.attr('href',"")
-			movieDropdown.text(phaseOne[i]);
-			movieDropdown.append(movieLink);
-			$('#pOne').append(movieDropdown);
-		}
-	}
+    $('#heroSubmit').on('click', function(){
+        displayMovieInfo();
+    });
 });
