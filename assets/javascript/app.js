@@ -26,6 +26,7 @@
     }
 
     $('#heroSubmit').on('click', function(){
+        $('#moviesView').html("");
         displayMovieInfo();
     });
 });
