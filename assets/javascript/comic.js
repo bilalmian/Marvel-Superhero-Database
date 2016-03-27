@@ -16,9 +16,13 @@ $( document ).ready(function() {
 
         $.ajax({url: url, method: "GET"}).done
             (function(data) {
-            console.log(data);
-            // console test to make sure something returns
-            var jsonText = JSON.stringify(data);
+            // console.log(data);  // console log of full data return
+
+            var comicResults = data.data.results[0];
+            console.log(comicResults);
+            // console log of comic result
+
+            var jsonText = JSON.stringify(comicResults);
             $("#comicsView").html(jsonText);
                          
          });
