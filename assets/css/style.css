@@ -1,0 +1,14 @@
+body{
+	background-image: url("../images/marvelvillains.jpg");
+	background-size: 50% 50%;
+}
+div{
+	margin-top: 10px;
+}
+div .panel-heading{
+	margin-top: 0px;
+}
+.comicImage{
+    height: 25%;
+    width: 30%;
+}

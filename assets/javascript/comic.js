@@ -25,14 +25,13 @@ $( document ).ready(function() {
             console.log("-----------------------------------------------------------------------------------------------------------------------------");
 
     // Useful results from refinded results
-            // 1. comics --  its an object
-            // 2. description -- description of the comic               
-            // 3. events --  its an object
-            // 4. name -- name of the comic
-            // 5. series --  its an object
-            // 6. stories --  its an object
-            // 7. thumbnail  --  its an object
-
+            // 1. comics --  its an object, a resource list containing comics which feature this character.
+            // 2. description -- description of the comic, a short bio or description of the character.             
+            // 3. events --  its an object, a resource list of events in which this character appears.
+            // 4. name -- name of the comic, the name of the character.,
+            // 5. series --  its an object, a resource list of series in which this character appears.
+            // 6. stories --  its an object, a resource list of stories in which this character appears.
+            // 7. thumbnail  --  its an object, a representative image for this character.
 
     // store the refined results in variables
             var comicResults = data.data.results[0].comics.items; // comics object
@@ -41,7 +40,9 @@ $( document ).ready(function() {
             var nameResults = data.data.results[0].name; // name item
             var seriesResults = data.data.results[0].series.items; // series object
             var storiesResults = data.data.results[0].stories.items; // stories object
-            var thumbnailResults = data.data.results[0].thumbnail.path; // thumbnail item
+            var thumbnailResultsPath = data.data.results[0].thumbnail.path; // thumbnail path item
+            var thumbnailResultsExtension = data.data.results[0].thumbnail.extension; // thumbnail extension item
+            var thumbnailResults = thumbnailResultsPath + "." +thumbnailResultsExtension; // thumbnail concatinated item
 
             console.log("List of comics");
             console.log(comicResults); // console log of comic result
@@ -66,6 +67,11 @@ $( document ).ready(function() {
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------
             
+            var comicImage = $("<img>");
+            comicImage.attr("src", thumbnailResults);
+            comicImage.addClass("comicImage");
+            $("#comicsView").append(comicImage);
+            $("#comicsView").append("</br></br></br>");
             var jsonTextComics = JSON.stringify(comicResults);
             $("#comicsView").append(jsonTextComics);
             $("#comicsView").append("</br></br></br>");
