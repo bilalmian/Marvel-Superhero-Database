@@ -34,7 +34,7 @@ $( document ).ready(function() {
 // display movie info function
     function displayMovieInfo(){
     // grabbing user input
-        var movie = $('#heroSearch').val().trim();
+        var movie = $('#characterSearch').val().trim();
     // url to pass through the ajax call
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json";
         $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
@@ -42,14 +42,15 @@ $( document ).ready(function() {
             console.log(response); // console log of full data return
     // creating a div for the movie info to go in
             var movieDiv = $('<div class="movieDiv">');
-            makeElem('<p>', 'Movie Info', movieDiv)
-            makeElem('<p>', response.Title, movieDiv)
+            makeElem('<h1 class="infoTitle">', 'Movie Info', movieDiv)
+            makeElem('<h3>', response.Title, movieDiv)
             makeElem('<p>', "Rating: " + response.Rated, movieDiv)
             makeElem('<p>', "Released: " + response.Released, movieDiv)
             makeElem('<p>', "Plot: " + response.Plot, movieDiv)
             // gets the image of the comic if there is one
             if (response.Poster != 'N/A'){
                 var image = $('<img>').attr("src", response.Poster);
+                image.addClass("images");
                 movieDiv.append(image);
             }
     // injecting movie info to html doc
@@ -60,7 +61,7 @@ $( document ).ready(function() {
 // display comic info function
     function displayComicInfo() {
     // grabbing user input
-        var heroName = $('#heroSearch').val();
+        var characterName = $('#characterSearch').val();
     // Variables needed for the hash
         var ts = new Date().getTime(); 
         var PRIV_KEY = "9ced83e38521d6850703a1c54a18fea775a60964"
@@ -69,14 +70,14 @@ $( document ).ready(function() {
     // apikey for the end of the url
         var apiKey = "bdcf4ef10cbcac4120f014ab0e020243";
     // url to pass through the ajax call
-        var url = "https://gateway.marvel.com/v1/public/characters?name=" + heroName + "&ts=" + ts + "&hash=" + hash + "&apikey=" + apiKey;
+        var url = "https://gateway.marvel.com/v1/public/characters?name=" + characterName + "&ts=" + ts + "&hash=" + hash + "&apikey=" + apiKey;
         console.log(url); // console log of url
     // ajax call
         $.ajax({ url: url, method: "GET" }).done(function(data) {
         // console.log(data);  // console log of full data return
     // drilling down to the needed data and place in a variable
             var refinedResults = data.data.results[0];
-            console.log(heroName); // console log of hero name
+            console.log(characterName); // console log of hero name
             console.log(refinedResults); // console log of comic result
     // Useful results from refinded results
             // 1. comics --  its an object, a resource list containing comics which feature this character.
@@ -99,12 +100,16 @@ $( document ).ready(function() {
 
     // creating a div for the comic info to go in
             var comicDiv = $('<div class="comicDiv">');
-            makeElem("<p>", "Comic Info", comicDiv);
-            makeElem("<p>", nameResults, comicDiv);
-            makeElem("<p>", "Comic Plot: " + descriptionResults, comicDiv);
+            makeElem('<h1 class="infoTitle">', "Comic Info", comicDiv);
+            makeElem("<h3>", nameResults, comicDiv);
+            // gets the plot of the comic if there is one
+            if (descriptionResults != ""){
+                makeElem("<p>", "Comic Plot: " + descriptionResults, comicDiv);
+            }
             // gets the image of the comic if there is one
             if (thumbnailResults != "N/A"){
                 var image = $("<img>").attr("src", thumbnailResults);
+                image.addClass("images");
                 comicDiv.append(image);
             }
     // injecting comic info to html doc
@@ -112,7 +117,7 @@ $( document ).ready(function() {
          });
     }
 // -----------------------------------------------------------------------------------------------------------------------------------------------------           
-    $('#heroSubmit').on('click', function(){
+    $('#characterSubmit').on('click', function(){
     // clear the previous infomation with each button click
         $('#moviesView').html("");
         $('#comicsView').html("");
