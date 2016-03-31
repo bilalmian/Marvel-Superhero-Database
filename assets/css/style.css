@@ -1,3 +1,12 @@
 body {
 	background-image: url('../images/concrete_seamless.png');
 }
+.images{
+	height: 370px;
+	width: 260px;
+}
+h1.infoTitle{
+	text-align: center;
+	text-decoration: underline;
+    text-decoration-style:wavy;
+}
