@@ -102,7 +102,10 @@ $( document ).ready(function() {
             var comicDiv = $('<div class="comicDiv">');
             makeElem('<h1 class="infoTitle">', "Comic Info", comicDiv);
             makeElem("<h3>", nameResults, comicDiv);
-            makeElem("<p>", "Comic Plot: " + descriptionResults, comicDiv);
+            // gets the plot of the comic if there is one
+            if (descriptionResults != ""){
+                makeElem("<p>", "Comic Plot: " + descriptionResults, comicDiv);
+            }
             // gets the image of the comic if there is one
             if (thumbnailResults != "N/A"){
                 var image = $("<img>").attr("src", thumbnailResults);

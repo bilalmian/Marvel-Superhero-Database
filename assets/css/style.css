@@ -4,9 +4,22 @@ body {
 .images{
 	height: 370px;
 	width: 260px;
+	position: inherit;
 }
 h1.infoTitle{
 	text-align: center;
 	text-decoration: underline;
-    text-decoration-style:wavy;
+ }
+.panel-primary>.panel-heading, .btn-primary{
+    color: #9d9d9d;
+    background-color: #101010;;
+    border-color: #101010;
+    text-align: center;
+}
+
+.panel-primary {
+    border-color: #101010;
+}
+#characterSubmit{
+	width: 100%;
 }
