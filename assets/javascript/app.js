@@ -175,7 +175,7 @@
     }
 
     function displayMovieInfo(){
-        var movie = $('#heroSearch').val().trim();
+        var movie = $('#characterSearch').val().trim();
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&r=json";
         $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
             console.log(movie);
@@ -195,7 +195,7 @@
         }); 
     }
 
-    $('#heroSubmit').on('click', function(){
+    $('#characterSubmit').on('click', function(){
         $('#moviesView').html("");
         displayMovieInfo();
     });
