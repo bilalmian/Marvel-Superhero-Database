@@ -81,10 +81,29 @@
 			}],
 	};
 
+	$(".headline").on("click", function () {
+		$('#moviesView').html("");
+		var movie = $(this).attr('data-imdb');
+   		var queryURL = "http://www.omdbapi.com/?i=" + movie + "&plot=full&r=json";
+   		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+            console.log(movie);
+            console.log(response);
+            var movieDiv = $('<div class="movieDiv">');
+            makeElem('<p>', '<b>Movie Info</b>', movieDiv)
+            makeElem('<p>', response.Title, movieDiv)
+
+            makeElem('<p>', "Rating: " + response.Rated, movieDiv)
+            makeElem('<p>', "Released: " + response.Released, movieDiv)
+            makeElem('<p>', "Plot: " + response.Plot, movieDiv)
+            if (response.Poster != 'N/A'){
+                var image = $('<img>').attr("src", response.Poster);
+                movieDiv.append(image);
+            }
+            $('#moviesView').prepend(movieDiv);
+        }); 
+   })
+
 	function displayPhase () {
-		$('#pOne').empty();
-		$('#pTwo').empty();
-		$('#pThree').empty();
 		
 		for (var i = 0; i < marvel.phaseOne.length; i++) {
 
@@ -113,6 +132,7 @@
 	}
 
    $(document).on("click", ".pull", function (){
+   		$('#moviesView').html("");
    		var movie = $(this).attr('data-imdb');
    		var queryURL = "http://www.omdbapi.com/?i=" + movie + "&plot=full&r=json";
    		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
@@ -133,6 +153,20 @@
         }); 
    })
 
+	// function wikia() {
+	// 	var articleID = 7139;
+	// 	var queryURL = "http://marvel.wikia.com/api/v1/Articles/AsSimpleJson?id=" + articleID;
+	// 	// http://marvel.wikia.com/api/v1/Articles/AsSimpleJson?id=7139
+	// 	console.log(queryURL);
+	// 	$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
+	// 		console.log(response);
+	// 		var wikiaDiv = $('<div class = "wikiaDiv">');
+	// 		makeElem('<p>','<b>Character Info</b>', wikiaDiv)
+	// 		makeElem('<p>',response.sections.title, wikiaDiv)
+
+	// 	$('#wikiaView').prepend(wikiaDiv);
+ //   		});
+ //   	};
     
 
     function makeElem(type, data, elemToappendTo){
@@ -166,4 +200,6 @@
         displayMovieInfo();
     });
     displayPhase ();
+ 
+    
 });

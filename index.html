@@ -26,10 +26,10 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
+					<!-- <span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> -->
 				</button>
 				<a class="navbar-brand" href="#">Marvel Superhero Database</a>
 			</div>
@@ -38,44 +38,18 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-left">
 			        <li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Before Cinematic Universe <span class="caret"></span></a>
-			          <ul class="dropdown-menu">
-			            <li><a href="#">Action</a></li>
-			            <li><a href="#">Another action</a></li>
-			            <li><a href="#">Something else here</a></li>
-			          </ul>
-			        </li>
-			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Phase 1 <span class="caret"></span></a>
 			          <ul class="dropdown-menu" id = "pOne">
-			            <li class = "pull"><a href>Iron Man</li>
-			            <li class = "pull"><a href="#">The Incredible Hulk</a></li>
-			            <li class = "pull"><a href="#">Iron Man 2</a></li>
-			            <li class = "pull"><a href="#">Thor</a></li>
-			            <li class = "pull"><a href="#">Captain America: The First Avenger</a></li>
-			            <li class = "pull"><a href="#">The Avengers</a></li>
 			          </ul>
 			        </li>
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Phase 2 <span class="caret"></span></a>
 			          <ul class="dropdown-menu" id = "pTwo">
-			            <li><a href="#">Iron Man 3</a></li>
-			            <li><a href="#">Thor: The Dark World</a></li>
-			            <li><a href="#">Captain America: The Winter Solider</a></li>
-			            <li><a href="#">Guardians of the Galaxy</a></li>
-			            <li><a href="#">Avengers: Age of Ultron</a></li>
-			            <li><a href="#">Ant-Man</a></li>
 			          </ul>
 			        </li>
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Phase 3 <span class="caret"></span></a>
 			          <ul class="dropdown-menu" id = "pThree">
-			            <li><a href="#">Captain America: Civil War</a></li>
-			            <li><a href="#">Doctor Strange</a></li>
-			            <li><a href="#">Guardians of the Galaxy Vol. 2</a></li>
-			            <li><a href="#">Thor: Ragnarok</a></li>
-			            <li><a href="#">Black Panther</a></li>
-			            <li><a href="#">Avengers: Infinity War, Part 1</a></li>
 			          </ul>
 			        </li>
 			    </ul>
@@ -87,38 +61,32 @@
 		<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 			<div id="carousel-id" class="carousel slide" data-ride="carousel">
 				<ol class="carousel-indicators">
-					<li data-target="#carousel-id" data-slide-to="0" class="active" data-interval ="3500"></li>
-					<li data-target="#carousel-id" data-slide-to="1" class="" data-interval ="3500"></li>
-					<li data-target="#carousel-id" data-slide-to="2" class="" data-interval ="3500"></li>
+					<li data-target="#carousel-id" data-slide-to="0" class="active" data-interval ="1000"></li>
+					<li data-target="#carousel-id" data-slide-to="1" class="" data-interval ="1000"></li>
+					<li data-target="#carousel-id" data-slide-to="2" class="" data-interval ="1000"></li>
 				</ol>
 				<div class="carousel-inner">
-					<div class="item">
-						<img src="assets/images/ageofapocalypse.png">
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>X-Men: Age of Apocalypse</h1>
-								<p></p>
-								<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<img src="assets/images/daredevil.jpg">
-						<div class="container">
-							<div class="carousel-caption">
-								<h1>Daredevil</h1>
-								<p></p>
-								<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-							</div>
-						</div>
-					</div>
 					<div class="item active">
-						<img src="assets/images/civilwar.jpg">
+						<img class = "headline" src="assets/images/civilwar.jpg" data-imdb = "tt3498820" data-character ="Captain America">
 						<div class="container">
 							<div class="carousel-caption">
-								<h1>Captain America: Civil War</h1>
-								<p></p>
-								<p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+								<h1 class ="headline" data-imdb = "tt3498820" data-character ="Captain America">Captain America: Civil War</h1>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img class="headline" src="assets/images/ageofapocalypse.png" data-imdb ="tt3385516" data-character = "Apocalypse">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1 class ="headline" data-imdb ="tt3385516" data-character = "Apocalypse">X-Men: Apocalypse</h1>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<img src="assets/images/daredevil.jpg" class = "headline" data-imdb = "tt3322312" data-character ="Daredevil">
+						<div class="container">
+							<div class="carousel-caption">
+								<h1 class ="headline" data-imdb = "tt3498820" data-character ="Captain America">Daredevil</h1>
 							</div>
 						</div>
 					</div>
@@ -130,7 +98,7 @@
 		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
-					<h3 class="panel-title">Superhero Search</h3>
+					<h3 class="panel-title">Character Search</h3>
 				</div>
 				<div class="panel-body">
 					<input type="text" name="" id="heroSearch" class="form-control">
@@ -152,24 +120,14 @@
 		</div>
 
 		<div class ="container-fluid" id ="infoView">
-			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" id ="moviesView">
-
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-				
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" id ="moviesView">	
 			</div>
 
 			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" id = "comicsView">
+			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id = "wikiaView"> hi
+				
 			</div>
 		</div>
 
